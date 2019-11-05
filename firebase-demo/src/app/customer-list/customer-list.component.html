@@ -1,0 +1,23 @@
+<table class="table table-sm">
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th></th>
+    </thead>
+    <ng-container *ngFor="let customer of customerArray">
+        <tr class="table-dark">
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.mobile}}</td>
+            <td>{{customer.address}}</td>
+            <td>
+            	<button class="btn btn-info">Edit</button>
+           	 	<button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </ng-container>
+</table>
