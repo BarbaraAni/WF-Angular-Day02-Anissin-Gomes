@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-5">
+    <!-- We will build this form using ReactiveForm based on the property "form" inside customerservice.ts  -->
+    <form [formGroup]="this.customerService.form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="$key"><!-- this is a primary key for each record of customer and after that we can display the active form control-->
+      <div class="form-group">
+        <label>Task</label>
+        <input formControlName="task" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.task.errors}"><!-- the value of the formControlName must match the name that we provided inside FormGroup in CustomerService class -->
+        <div class="invalid-feedback" *ngIf="submitted && formControls.task.errors">This field is required</div>
+      </div>
+      <div class="form-group">
+        <label>Deadline</label>
+        <input type="date" formControlName="deadline" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.deadline.errors}"><!-- the value of the formControlName must match the name that we provided inside FormGroup in CustomerService class -->
+        <div class="invalid-feedback" *ngIf="submitted && formControls.deadline.errors">This field is required</div>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.status.errors}">
+          <option value="done">Done</option>
+          <option value="not done">Not Done</option>
+          <option value="ongoing">Ongoing</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="submitted && formControls.status.errors">This field is required</div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Submit"><!-- the value of the formControlName must match the name that we provided inside FormGroup in CustomerService class -->
+      </div>
+    </form>
+    <div class="alert alert-info" *ngIf="showSuccessMessage">
+      submitted successfully.
+    </div>
+  </div>
+  <div class="col-md-7">
+    <app-customer-list></app-customer-list>
+  </div>
+</div>
